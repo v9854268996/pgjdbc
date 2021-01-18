@@ -37,6 +37,11 @@ public enum PGProperty {
     "false",
     "Specifies if number of rows fetched in ResultSet should be adaptive to maxResultBuffer and max row size."),
 
+  RUNTIME_META_DISABLE(
+      "runtimeMetaDisable",
+      "false",
+      "Disable quering metadata for every select"),
+
   /**
    * Specifies the highest number of rows which can be calculated by adaptiveFetch. Requires
    * adaptiveFetch set to true to work. Default value is -1 (used as infinity).

@@ -144,6 +144,7 @@ public class PgConnection implements BaseConnection {
   private boolean readOnly = false;
   // Filter out database objects for which the current user has no privileges granted from the DatabaseMetaData
   private boolean  hideUnprivilegedObjects ;
+  private boolean runtimeMetaDisable;
   // Bind String to UNSPECIFIED or VARCHAR?
   private final boolean bindStringAsVarchar;
 
@@ -236,6 +237,8 @@ public class PgConnection implements BaseConnection {
     }
 
     this.hideUnprivilegedObjects = PGProperty.HIDE_UNPRIVILEGED_OBJECTS.getBoolean(info);
+
+    this.runtimeMetaDisable = PGProperty.RUNTIME_META_DISABLE.getBoolean(info);
 
     Set<Integer> binaryOids = getBinaryOids(info);
 
@@ -981,6 +984,10 @@ public class PgConnection implements BaseConnection {
 
   public boolean getHideUnprivilegedObjects() {
     return hideUnprivilegedObjects;
+  }
+
+  public boolean getRuntimeMetaDisable() {
+    return runtimeMetaDisable;
   }
 
   /**
