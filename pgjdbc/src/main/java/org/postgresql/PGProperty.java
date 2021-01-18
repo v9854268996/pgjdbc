@@ -37,7 +37,6 @@ public enum PGProperty {
     "false",
     "Specifies if number of rows fetched in ResultSet should be adaptive to maxResultBuffer and max row size."),
 
-
   RUNTIME_META_DISABLE(
       "runtimeMetaDisable",
       "false",

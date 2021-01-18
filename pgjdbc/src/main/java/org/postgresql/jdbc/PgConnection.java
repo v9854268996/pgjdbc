@@ -126,7 +126,6 @@ public class PgConnection implements BaseConnection {
   // Default statement prepare threshold.
   protected int prepareThreshold;
 
-
   /**
    * Default fetch size for statement.
    *

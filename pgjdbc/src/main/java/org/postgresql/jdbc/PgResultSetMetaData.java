@@ -252,7 +252,6 @@ public class PgResultSetMetaData implements ResultSetMetaData, PGResultSetMetaDa
     GettableHashMap<FieldMetadata.Key, FieldMetadata> md = new GettableHashMap<FieldMetadata.Key, FieldMetadata>();
     try {
       rs = stmt.executeQuery(sql.toString());
-
       while (rs.next()) {
         int table = (int) rs.getLong(1);
         int column = (int) rs.getLong(2);
