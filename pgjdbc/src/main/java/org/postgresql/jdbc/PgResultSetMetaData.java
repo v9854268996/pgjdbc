@@ -58,8 +58,9 @@ public class PgResultSetMetaData implements ResultSetMetaData, PGResultSetMetaDa
    * @exception SQLException if a database access error occurs
    */
   public boolean isAutoIncrement(int column) throws SQLException {
-    if (connection instanceof PgConnection && !((PgConnection)connection).getRuntimeMetaDisable() )
+    if (connection instanceof PgConnection && !((PgConnection)connection).getRuntimeMetaDisable() ) {
       fetchFieldMetaData();
+    }
     Field field = getField(column);
     FieldMetadata metadata = field.getMetadata();
     return metadata != null && metadata.autoIncrement;
@@ -116,8 +117,9 @@ public class PgResultSetMetaData implements ResultSetMetaData, PGResultSetMetaDa
 
   @Override
   public int isNullable(int column) throws SQLException {
-    if (connection instanceof PgConnection && !((PgConnection)connection).getRuntimeMetaDisable() )
+    if (connection instanceof PgConnection && !((PgConnection)connection).getRuntimeMetaDisable() ) {
       fetchFieldMetaData();
+    }
     Field field = getField(column);
     FieldMetadata metadata = field.getMetadata();
     return metadata == null ? ResultSetMetaData.columnNullable : metadata.nullable;
@@ -157,8 +159,9 @@ public class PgResultSetMetaData implements ResultSetMetaData, PGResultSetMetaDa
     if (field.getTableOid() == 0) {
       return "";
     }
-    if (connection instanceof PgConnection && !((PgConnection)connection).getRuntimeMetaDisable() )
+    if (connection instanceof PgConnection && !((PgConnection)connection).getRuntimeMetaDisable() ){
       fetchFieldMetaData();
+    }
     FieldMetadata metadata = field.getMetadata();
     return metadata == null ? "" : metadata.columnName;
   }
@@ -275,8 +278,9 @@ public class PgResultSetMetaData implements ResultSetMetaData, PGResultSetMetaDa
   }
 
   public String getBaseSchemaName(int column) throws SQLException {
-    if (connection instanceof PgConnection && !((PgConnection)connection).getRuntimeMetaDisable() )
+    if (connection instanceof PgConnection && !((PgConnection)connection).getRuntimeMetaDisable() ){
       fetchFieldMetaData();
+    }
     Field field = getField(column);
     FieldMetadata metadata = field.getMetadata();
     return metadata == null ? "" : metadata.schemaName;
@@ -297,8 +301,9 @@ public class PgResultSetMetaData implements ResultSetMetaData, PGResultSetMetaDa
   }
 
   public String getBaseTableName(int column) throws SQLException {
-    if (connection instanceof PgConnection && !((PgConnection)connection).getRuntimeMetaDisable() )
+    if (connection instanceof PgConnection && !((PgConnection)connection).getRuntimeMetaDisable() ) {
       fetchFieldMetaData();
+    }
     Field field = getField(column);
     FieldMetadata metadata = field.getMetadata();
     return metadata == null ? "" : metadata.tableName;
