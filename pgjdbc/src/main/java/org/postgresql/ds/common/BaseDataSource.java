@@ -1542,6 +1542,14 @@ public abstract class BaseDataSource implements CommonDataSource, Referenceable 
     PGProperty.HIDE_UNPRIVILEGED_OBJECTS.set(properties, hideUnprivileged);
   }
 
+  public boolean getRuntimeMetaDisable() {
+    return PGProperty.RUNTIME_META_DISABLE.getBoolean(properties);
+  }
+
+  public void setRuntimeMetaDisable(boolean runtimeMetaDisable) {
+    PGProperty.RUNTIME_META_DISABLE.set(properties, runtimeMetaDisable);
+  }
+
   public @Nullable String getMaxResultBuffer() {
     return PGProperty.MAX_RESULT_BUFFER.get(properties);
   }

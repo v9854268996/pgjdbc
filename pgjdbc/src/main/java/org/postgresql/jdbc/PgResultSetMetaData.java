@@ -159,7 +159,7 @@ public class PgResultSetMetaData implements ResultSetMetaData, PGResultSetMetaDa
     if (field.getTableOid() == 0) {
       return "";
     }
-    if (connection instanceof PgConnection && !((PgConnection)connection).getRuntimeMetaDisable() ){
+    if (connection instanceof PgConnection && !((PgConnection)connection).getRuntimeMetaDisable() ) {
       fetchFieldMetaData();
     }
     FieldMetadata metadata = field.getMetadata();
@@ -278,7 +278,7 @@ public class PgResultSetMetaData implements ResultSetMetaData, PGResultSetMetaDa
   }
 
   public String getBaseSchemaName(int column) throws SQLException {
-    if (connection instanceof PgConnection && !((PgConnection)connection).getRuntimeMetaDisable() ){
+    if (connection instanceof PgConnection && !((PgConnection)connection).getRuntimeMetaDisable() ) {
       fetchFieldMetaData();
     }
     Field field = getField(column);
