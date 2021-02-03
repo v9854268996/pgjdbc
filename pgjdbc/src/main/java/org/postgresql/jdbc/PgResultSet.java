@@ -1343,6 +1343,13 @@ public class PgResultSet implements ResultSet, org.postgresql.PGRefCursorResultS
       return;
     }
 
+    if (((PgConnection)connection).getRuntimeMetaDisable()) {
+      throw new PSQLException(
+          GT.tr(
+              "Cannot update because table metadata is not fetched. Switch RuntimeMetaDisable parameter to 0 and reconnect"),
+          PSQLState.NOT_IMPLEMENTED);
+    }
+
     StringBuilder selectSQL = new StringBuilder("select ");
 
     ResultSetMetaData rsmd = getMetaData();
@@ -3344,6 +3351,13 @@ public class PgResultSet implements ResultSet, org.postgresql.PGRefCursorResultS
           GT.tr(
               "Cannot update the ResultSet because it is either before the start or after the end of the results."),
           PSQLState.INVALID_CURSOR_STATE);
+    }
+
+    if (((PgConnection)connection).getRuntimeMetaDisable()) {
+      throw new PSQLException(
+          GT.tr(
+              "Cannot update because table metadata is not fetched. Switch RuntimeMetaDisable parameter to 0 and reconnect"),
+          PSQLState.NOT_IMPLEMENTED);
     }
 
     checkColumnIndex(columnIndex);
